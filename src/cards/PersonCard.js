@@ -3,24 +3,29 @@ import React from "react";
 /**
  * Card to display given category
  */
-const MovieCard = ({ movie }) => {
+const PersonCard = ({ person }) => {
   const IMG_PATH = "https://image.tmdb.org/t/p/w500";
   return (
     <div className={"person--card"}>
-      {movie.poster_path ? (
+      {person && person.profile_path ? (
         <img
           className={"person--photo"}
-          src={`${IMG_PATH}${movie.poster_path}`}
+          src={`${IMG_PATH}${person.profile_path}`}
           alt=""
         />
       ) : (
         <div className={"movie--placeholder"}>No Image Found</div>
       )}
-      <h5 className={"person--name"}>{movie.title}</h5>
+      <h5 className={"person--name"}>
+        {person ? (
+          person.name
+        ) : (
+          <div className={"person--name"}>No Name Found</div>
+        )}
+      </h5>
     </div>
   );
 };
 
-export default MovieCard;
-//
+export default PersonCard;
 //

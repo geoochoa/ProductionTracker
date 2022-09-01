@@ -30,26 +30,23 @@ nav{
   text-decoration: none;
 }
 
-.container{
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-  
-
-  display: grid;
-  gap: 15px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+.person--card{
+  height: 260px;
 }
 
 .person--photo{
-  width: 100%;
+  height: 250px;
   border-radius: 8px;
+}
 
+.person--name{
+  margin: 0;
 }
 
 .movie--placeholder{
-  min-height: 359px;
-  background-color: #8EBBFF;
+  height: 250px;
+  width: 166px;
+  background-color: #2F3855;
   color: white;
   display: flex;
   justify-content: center;
@@ -58,7 +55,7 @@ nav{
 }
 
 h1 {
-  font-size: 92px;
+  font-size: 72px;
   margin-top: 0;
   line-height: 1;
   margin-bottom: 10px;
@@ -74,15 +71,49 @@ h1 {
 .poster{
   background-size: cover;
   background-position: top center;
-  min-height: 600px;
+  min-height: 300px;
   display: flex;
   align-items: flex-end;
   padding-bottom: 50px;
   position: relative;
   margin-bottom: 30px;
+
+
+}
+
+.hero-title{
+  font-size: 64px;
 }
 
 
-.hero-title{
-  font-size: 72px;
+.cat--slider{
+  overflow-x: scroll;
+  overflow-y: hidden;
+  position: relative;
+  height: 305px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  
+  width: 94%;
+  padding-left: 3%;
+  padding-right: 3%;
+  margin-bottom: 30px;
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.cat--slider::-webkit-scrollbar {
+  display: none;
+}
+
+.cat--title{
+  margin: 0;
+  display: flex;
+  margin-left: 3%;
 }
