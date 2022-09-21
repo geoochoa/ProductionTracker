@@ -4,6 +4,7 @@ import React from "react";
  * Card to display given category
  */
 const MovieCard = ({ movie }) => {
+  //console.log(movie);
   const IMG_PATH = "https://image.tmdb.org/t/p/w500";
   return (
     <div className={"person--card"}>

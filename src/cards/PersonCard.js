@@ -3,7 +3,8 @@ import React from "react";
 /**
  * Card to display given category
  */
-const PersonCard = ({ person }) => {
+const PersonCard = ({ person, movie }) => {
+  //console.log(person);
   const IMG_PATH = "https://image.tmdb.org/t/p/w500";
   return (
     <div className={"person--card"}>
@@ -16,12 +17,16 @@ const PersonCard = ({ person }) => {
       ) : (
         <div className={"movie--placeholder"}>No Image Found</div>
       )}
+
       <h5 className={"person--name"}>
         {person ? (
           person.name
         ) : (
           <div className={"person--name"}>No Name Found</div>
         )}
+      </h5>
+      <h5 className={"person--name"}>
+        {movie ? movie : <div className={"person--name"}>No Name Found</div>}
       </h5>
     </div>
   );

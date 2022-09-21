@@ -12,6 +12,9 @@ function Landing() {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState({});
   //const [searchKey, setSearchKey] = useState("");
+  //const [directors, setDirectors] = useState({});
+  //const [dps, setDps] = useState({});
+  //const [writers, setWriters] = useState({});
 
   const fetchMovies = async (searchKey) => {
     const chosenMovie = Math.floor(Math.random() * 20);
@@ -30,9 +33,8 @@ function Landing() {
       var currMovie = data.results[i];
       movieIDS[i] = currMovie.id;
     }
-    fetchCredits(movieIDS, data.results);
 
-    //setMovie(data.results[0]);
+    fetchCredits(movieIDS, data.results);
     setMovies(data.results);
     setSelectedMovie(data.results[chosenMovie]);
   };
@@ -46,7 +48,6 @@ function Landing() {
    * Sound
    */
   const fetchCredits = async (movieIDS, selectedMovies) => {
-    //needs to be passed movies (a)
     var credits = [20];
     for (let i = 0; i < movieIDS.length; i += 1) {
       //20 API calls
@@ -57,10 +58,23 @@ function Landing() {
           api_key: process.env.REACT_APP_SIEKR_API_KEY,
         },
       });
-      data["movie-title"] = selectedMovies[i].title; //to append the curr movie onto credits (b)
+      data["movieTitle"] = selectedMovies[i].title;
       credits[i] = data;
     }
+
     setCredits(credits);
+    processCredits(credits);
+  };
+
+  const processCredits = (credits) => {
+    var people = {};
+
+    for (let i = 0; i < credits.length; i += 1) {
+      //console.log(credits[i]);
+    }
+
+    people = credits[0].crew.filter(({ job }) => job === "Director");
+    //console.log(people);
   };
 
   useEffect(() => {
@@ -106,6 +120,8 @@ function Landing() {
       <div>{renderCategory("Director", "crew")}</div>
       <h2 className="cat--title">Trending Cinematographers</h2>
       <div>{renderCategory("Director of Photography", "crew")}</div>
+      <h2 className="cat--title">Trending Actors</h2>
+      <div>{renderCategory("Acting", "cast")}</div>
     </div>
   );
 }
@@ -125,15 +141,3 @@ export default Landing;
             .then(response => response.json())
             .then((jsonData)=>jsonData.crew.filter(({job})=> job ==='Director'))
  */
-
-//trending categories:
-// Trending from Thor: Love and Thunder
-//  x .. x .. x .. x .. See All ->
-// Trending from Top Gun: Maverick
-//  x .. x .. x .. x .. See All ->
-
-//Have to fix category slider to accept more than 1 return of job
-//Currently, find returns first person belonging to job description
-//Would rather want filter with the ability to return n amounts of people
-//But only if under 20
-//Though it would be ideal to have credits dynamic, and state updates

@@ -13,10 +13,11 @@ const CategorySlider = ({ movies, credits, category, role }) => {
       {credits.map((credit) => (
         <PersonCard
           key={credit.id}
+          movie={credit.movieTitle}
           person={
             role === "crew"
               ? credit.crew.find(({ job }) => job === category)
-              : credit.cast.find(({ job }) => job === category)
+              : credit.cast[0]
           }
         />
       ))}
@@ -26,16 +27,7 @@ const CategorySlider = ({ movies, credits, category, role }) => {
 
 export default CategorySlider;
 
-//filter out done here
-//trying to access credits.cast/crew to display sought after category
 /*
-<section className="cat--slider">
-      {credits.map((role) => (
-        <PersonCard key={role.id} person={role.crew.filter(({ job }) => job === category)} />
-      ))}
-</section>
-
-
 
 <section className="cat--slider">
       {movies.map((movie) => (
@@ -43,5 +35,3 @@ export default CategorySlider;
       ))}
     </section>
 */
-
-//ML to find text of poster?

@@ -40,7 +40,10 @@ nav{
 }
 
 .person--name{
+  color: #8EBBFF;
   margin: 0;
+  word-wrap: break-word;
+  width: 166px;
 }
 
 .movie--placeholder{
@@ -90,7 +93,7 @@ h1 {
   overflow-x: scroll;
   overflow-y: hidden;
   position: relative;
-  height: 305px;
+  height: 310px;
   width: 100vw;
   display: flex;
   align-items: center;
